@@ -24,7 +24,7 @@ public struct Font {
     }
     
     public func converter<Font>(_ mapper: (String, CGFloat) -> Font) -> Font {
-        mapper(family, size)
+        mapper(name, size)
     }
     
     public static func registerFonts() {
