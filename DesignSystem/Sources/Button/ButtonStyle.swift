@@ -8,7 +8,7 @@ public struct BrandButtonStyle {
 }
 
 public extension BrandButtonStyle {
-    static func primary(variation: Variation = .green) -> BrandButtonStyle {
+    static func primary(_ variation: Variation = .green) -> BrandButtonStyle {
         switch variation {
         case .green:
             .init(
@@ -27,7 +27,7 @@ public extension BrandButtonStyle {
         }
     }
     
-    static func secondary(variation: Variation = .green) -> BrandButtonStyle {
+    static func secondary(_ variation: Variation = .green) -> BrandButtonStyle {
         switch variation {
         case .green:
             .init(

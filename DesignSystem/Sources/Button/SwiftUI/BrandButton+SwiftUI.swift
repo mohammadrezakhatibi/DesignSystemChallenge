@@ -75,9 +75,9 @@ public struct BrandButton: View {
     
     return ScrollView {
         buttons("Primary", style: .primary())
-        buttons("Primary", style: .primary(variation: .blue))
+        buttons("Primary", style: .primary(.blue))
         buttons("Secondary", style: .secondary())
-        buttons("Secondary", style: .secondary(variation: .blue))
+        buttons("Secondary", style: .secondary(.blue))
     }
     .previewLayout(.fixed(width: 300, height: 100))
     .padding()
