@@ -1,11 +1,21 @@
 import Foundation
 import UIKit
 
+/// BrandButtonUIKit.
+///
+/// - Note: This is the UIKit implementation for `BrandButton`.
+///         for SwiftUI use `BrandButton`
+///
+/// - Parameters:
+///   - style: The button style. See `BrandButtonStyle` documentation.
+///   - title: The button title.
+///   - image: The button image and image position.
+///   - action: The button action.
 public final class BrandButtonUIKit: UIButton {
     private var style: BrandButtonStyle
-    private var spinner = UIActivityIndicatorView()
     private var image: ButtonImage<UIImage>?
     
+    private var spinner = UIActivityIndicatorView()
     private var values: ButtonTokens {
         guard isEnabled else {
             return style.disabled
@@ -33,7 +43,7 @@ public final class BrandButtonUIKit: UIButton {
         }
     }
     
-    public init(style: BrandButtonStyle,title: String, image: ButtonImage<UIImage>? = nil, action: @escaping () -> Void) {
+    public init(style: BrandButtonStyle, title: String, image: ButtonImage<UIImage>? = nil, action: @escaping () -> Void) {
         self.style = style
         self.image = image
         super.init(frame: .zero)

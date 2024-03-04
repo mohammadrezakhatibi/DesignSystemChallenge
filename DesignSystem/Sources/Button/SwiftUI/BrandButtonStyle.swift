@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// BrandButtonStyle.
+/// Implementation of SwiftUI's `ButtonStyle` for `BrandButtonStyle`
 extension BrandButtonStyle: ButtonStyle {
     public func makeBody(configuration: ButtonStyleConfiguration) -> some View {
         ButtonView(style: self, configuration: configuration)

@@ -1,5 +1,16 @@
 import SwiftUI
 
+/// BrandButton.
+///
+/// - Note: This is the SwiftUI implementation for `BrandButton`.
+///         for UIKit use `BrandButtonUIKit`
+///
+/// - Parameters:
+///   - isLoading: A binding parameter for handling loading state.
+///   - style: The button style. See `BrandButtonStyle` documentation.
+///   - title: The button title.
+///   - image: The button image and image position.
+///   - action: The button action.
 public struct BrandButton: View {
     @Binding var isLoading: Bool
     let style: BrandButtonStyle
