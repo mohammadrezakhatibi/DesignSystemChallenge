@@ -2,4 +2,4 @@ DesignSystemExample/DesignSystemExample.xcodeproj/project.xcworkspace/contents.x
 DesignSystemExample/DesignSystemExample.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 *.xcuserstate
 *.xcuserstate
-.DS_Store
+*.DS_Store
