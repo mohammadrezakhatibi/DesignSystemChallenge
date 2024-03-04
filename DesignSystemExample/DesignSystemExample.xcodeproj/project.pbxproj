@@ -11,6 +11,7 @@
 		D289C9FC2B95E2EA0089CBA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289C9FB2B95E2EA0089CBA0 /* ContentView.swift */; };
 		D289C9FE2B95E2EB0089CBA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D289C9FD2B95E2EB0089CBA0 /* Assets.xcassets */; };
 		D289CA012B95E2EB0089CBA0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D289CA002B95E2EB0089CBA0 /* Preview Assets.xcassets */; };
+		D289CA092B95E5C70089CBA0 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D289CA082B95E5C70089CBA0 /* DesignSystem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D289CA092B95E5C70089CBA0 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +39,7 @@
 			children = (
 				D289C9F82B95E2EA0089CBA0 /* DesignSystemExample */,
 				D289C9F72B95E2EA0089CBA0 /* Products */,
+				D289CA072B95E5C70089CBA0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +70,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D289CA072B95E5C70089CBA0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +93,9 @@
 			dependencies = (
 			);
 			name = DesignSystemExample;
+			packageProductDependencies = (
+				D289CA082B95E5C70089CBA0 /* DesignSystem */,
+			);
 			productName = DesignSystemExample;
 			productReference = D289C9F62B95E2EA0089CBA0 /* DesignSystemExample.app */;
 			productType = "com.apple.product-type.application";
@@ -342,6 +355,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D289CA082B95E5C70089CBA0 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D289C9EE2B95E2EA0089CBA0 /* Project object */;
 }
