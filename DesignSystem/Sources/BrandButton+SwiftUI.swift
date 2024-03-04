@@ -67,31 +67,6 @@ private enum IsLoadingKey: EnvironmentKey {
     static var defaultValue: Bool = false
 }
 
-struct ButtonPreview: PreviewProvider {
-    static var previews: some View {
-        Group {
-            buttons("Primary", style: .primary())
-            buttons("Primary", style: .primary(variation: .blue))
-            buttons("Secondary", style: .secondary())
-            buttons("Secondary", style: .secondary(variation: .blue))
-        }
-        .previewLayout(.fixed(width: 300, height: 100))
-        .padding()
-    }
-    
-    static func buttons(_ name: String, style: BrandButtonStyle) -> some View {
-        VStack {
-            Button("\(name)", action: {})
-            Button("\(name) - disabled", action: {})
-                .disabled(true)
-            Button("\(name) - loading", action: {})
-                .isLoading(true)
-        }
-        .buttonStyle(style)
-    }
-
-}
-
 extension Font {
     var toFont: SwiftUI.Font {
         converter(SwiftUI.Font.custom(_:size:))
