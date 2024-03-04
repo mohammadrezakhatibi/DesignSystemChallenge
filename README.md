@@ -11,6 +11,7 @@ Here are the key points about the project:
 6. You may notice some inconsistencies in my code; this is because I tried to use different approaches to showcase my Swift knowledge.
 7. Since the DesignSystem is platform-agnostic, there are two implementations of `BrandButton`, SwiftUI and UIKit.
 8. Of course, there are many ways to implement a design system. I tried to keep it simple, reusable, and easy to use.
+9. There are slight differences between SwiftUI and UIKit in the loading state, which can be improved in the future.
 
 ## **ButtonTokens**
 Button token is a basic and primitive button style like background color, text, border color, etc. Each state should have a separate token.
