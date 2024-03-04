@@ -4,6 +4,7 @@ import UIKit
 public final class BrandButtonUIKit: UIButton {
     private var style: BrandButtonStyle
     private var spinner = UIActivityIndicatorView()
+    private var image: ButtonImage<UIImage>?
     
     private var values: ButtonTokens {
         guard isEnabled else {
@@ -32,15 +33,16 @@ public final class BrandButtonUIKit: UIButton {
         }
     }
     
-    public init(style: BrandButtonStyle,title: String, image: UIImage? = nil, action: @escaping () -> Void) {
+    public init(style: BrandButtonStyle,title: String, image: ButtonImage<UIImage>? = nil, action: @escaping () -> Void) {
         self.style = style
+        self.image = image
         super.init(frame: .zero)
         
         addAction(UIAction { _ in
             action()
         }, for: .touchUpInside)
         
-        appearanceView(with: title, image: image)
+        appearanceView(with: title)
         
         setupSpinner()
     }
@@ -73,7 +75,7 @@ public final class BrandButtonUIKit: UIButton {
         spinner.color = values.text.uiColor
     }
     
-    private func appearanceView(with title: String, image: UIImage?) {
+    private func appearanceView(with title: String) {
         // Appearance button
         contentEdgeInsets = .init(top: 0, left: 16, bottom: 0, right: 16)
         backgroundColor = values.background.uiColor
@@ -87,11 +89,17 @@ public final class BrandButtonUIKit: UIButton {
         titleLabel?.font = values.font.converter(UIFont.init(name:size:))
         
         // Appearance imageView
-        setImage(image, for: .normal)
+        setImage(image?.image, for: .normal)
         imageView?.tintColor = values.text.uiColor
         imageEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 12)
         imageView?.contentMode = .scaleAspectFit
         imageView?.tintColor = values.text.uiColor
+        
+        if image?.position == .trailing {
+            transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+            titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+            imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        }
     }
     
     private func setupSpinner() {

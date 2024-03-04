@@ -1,80 +1,73 @@
 import SwiftUI
 
-extension BrandButtonStyle: ButtonStyle {
-    public func makeBody(configuration: ButtonStyleConfiguration) -> some View {
-        ButtonView(style: self, configuration: configuration)
+public struct BrandButton: View {
+    @Binding var isLoading: Bool
+    let style: BrandButtonStyle
+    let title: String
+    let image: ButtonImage<Image>?
+    let action: () -> Void
+    
+    public init(
+        style: BrandButtonStyle,
+        title: String,
+        image: ButtonImage<Image>? = nil,
+        isLoading: Binding<Bool>? = nil,
+        action: @escaping () -> Void
+    ) {
+        self.style = style
+        self.title = title
+        self.image = image
+        self.action = action
+        self._isLoading = isLoading ?? .constant(false)
     }
-
-    fileprivate func getValues(enabled: Bool, isPressed: Bool) -> ButtonTokens {
-        guard enabled else {
-            return disabled
-        }
-
-        return isPressed ? pressed : normal
-    }
-}
-
-private struct ButtonView: View {
-    var style: BrandButtonStyle
-    var configuration: ButtonStyleConfiguration
-
-    @Environment(\.isEnabled) var isEnabled
-    @Environment(\.isLoading) var isLoading
-
-    var values: ButtonTokens {
-        style.getValues(enabled: isEnabled, isPressed: configuration.isPressed)
-    }
-
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: style.cornerRadius)
-                .fill(values.background.color)
-                .frame(height: 44)
-                .overlay(
-                    RoundedRectangle(cornerRadius: style.cornerRadius)
-                        .stroke(values.borderColor?.color ?? .clear, lineWidth: values.borderWidth)
-                )
-
+    
+    public var body: some View {
+        Button(action: {
+            action()
+        }, label: {
             HStack(spacing: 12) {
-                if isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: values.text.color))
+                if let image = image {
+                    if image.position == .leading {
+                        image.image
+                            .frame(width: 12, height: 12)
+                        Text(title)
+                    } else {
+                        Text(title)
+                        image.image
+                            .frame(width: 12, height: 12)
+                    }
+                } else {
+                    Text(title)
                 }
-                configuration.label
-                    .font(values.font.toFont)
-                    .foregroundColor(values.text.color)
-                    .padding([.horizontal], 8)
             }
+        })
+        .isLoading(isLoading)
+        .buttonStyle(style)
+    }
+}
+
+
+#Preview {
+    func buttons(_ name: String, style: BrandButtonStyle) -> some View {
+        VStack(alignment: .leading) {
+            Text("\(name)")
+                .font(.title3.bold())
+            Button("\(name)", action: {})
+            Button("\(name) - disabled", action: {})
+                .disabled(true)
+            Button("\(name) - loading", action: {})
+                .isLoading(true)
         }
+        .buttonStyle(style)
+        .padding(.top, 32)
     }
-}
-
-public extension EnvironmentValues {
-    var isLoading: Bool {
-        get { self[IsLoadingKey.self] }
-        set { self[IsLoadingKey.self] = newValue }
+    
+    return ScrollView {
+        buttons("Primary", style: .primary())
+        buttons("Primary", style: .primary(variation: .blue))
+        buttons("Secondary", style: .secondary())
+        buttons("Secondary", style: .secondary(variation: .blue))
     }
+    .previewLayout(.fixed(width: 300, height: 100))
+    .padding()
 }
-
-public extension View {
-    func isLoading(_ loading: Bool, animation: Animation = .easeInOut(duration: 0.2)) -> some View {
-        environment(\.isLoading, loading)
-            .animation(animation)
-    }
-}
-
-private enum IsLoadingKey: EnvironmentKey {
-    static var defaultValue: Bool = false
-}
-
-extension Font {
-    var toFont: SwiftUI.Font {
-        converter(SwiftUI.Font.custom(_:size:))
-    }
-}
-extension Palette {
-    var color: Color {
-        Color(hex: self.rawValue)
-    }
-}
-
