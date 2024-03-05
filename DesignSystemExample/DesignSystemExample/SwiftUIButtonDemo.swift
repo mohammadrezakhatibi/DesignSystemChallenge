@@ -1,14 +1,7 @@
-//
-//  ContentView.swift
-//  DesignSystemExample
-//
-//  Created by Mohammadreza Khatibi on 04.03.24.
-//
-
 import SwiftUI
 import DesignSystem
 
-struct BrandButtonSwiftUI: View {
+struct SwiftUIButtonDemo: View {
     @State var isLoading: Bool = false
     let style: BrandButtonStyle
     let isEnabled: Bool
@@ -41,5 +34,5 @@ struct BrandButtonSwiftUI: View {
 }
 
 #Preview {
-    BrandButtonSwiftUI(style: .primary(), title: "Title", isEnabled: true)
+    SwiftUIButtonDemo(style: .primary(), title: "Title", isEnabled: true)
 }
