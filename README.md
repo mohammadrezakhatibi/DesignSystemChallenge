@@ -3,7 +3,7 @@
 ### Hi 👋🏼
 Here are the key points about the project:
 
-1. There is no necessary setup for running the project. Just clone and run DesignSystemChallenge.xcworkspace!
+1. There is no necessary setup for running the project. Just clone (main or develop) and run DesignSystemChallenge.xcworkspace!
 2. In the workspace, there is a package called DesignSystem and a project called DesignSystemExample.
 3. The **DesignSystem** package is all about design system implementation.
 3. The **DesignSystemExample** contains all demos related to the design system.
