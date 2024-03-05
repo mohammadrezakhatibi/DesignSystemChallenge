@@ -19,7 +19,7 @@ public struct BrandButton: View {
     let action: () -> Void
     
     public init(
-        style: BrandButtonStyle,
+        style: BrandButtonStyle = .primary(),
         title: String,
         image: ButtonImage<Image>? = nil,
         isLoading: Binding<Bool>? = nil,
