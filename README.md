@@ -13,6 +13,9 @@ Here are the key points about the project:
 8. Of course, there are many ways to implement a design system. I tried to keep it simple, reusable, and easy to use.
 9. There are slight differences between SwiftUI and UIKit in the loading state, which can be improved in the future.
 
+## **Diagram**
+<img src="https://raw.githubusercontent.com/mohammadrezakhatibi/DesignSystemChallenge/develop/diagram.png" width="700">
+
 ## **ButtonTokens**
 Button token is a basic and primitive button style like background color, text, border color, etc. Each state should have a separate token.
 
